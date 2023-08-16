@@ -946,13 +946,13 @@ padding: 35px 40px;
                 <h2 id="news">更新履歴とお知らせ</h2>
                 <p>※リンクをクリックするとgoogle driveが開きます。</p>
             <label>気象情報</label>
-            <input type="checkbox" id="checkbox1">
+            <input type="checkbox" id="checkbox1" class="filter-checkbox" data-target="kind_1">
             <label>地震情報</label>
-            <input type="checkbox" id="checkbox2">
+            <input type="checkbox" id="checkbox2" class="filter-checkbox" data-target="kind_2">
             <label>J-alert</label>
-            <input type="checkbox" id="checkbox3">
+            <input type="checkbox" id="checkbox3" class="filter-checkbox" data-target="kind_3">
             <label>その他</label>
-            <input type="checkbox" id="checkbox4">
+            <input type="checkbox" id="checkbox4" class="filter-checkbox" data-target="kind_4">
 <section class="product" style="line-height: normal;">
     <div class="inner-block">
       <ul class="product-list">
@@ -1036,15 +1036,19 @@ padding: 35px 40px;
             if (json[i].kind === '気象情報') {
                 kind = '気象情報'
                 table_body.Id = 'kind1'
+                table_body.classList.add('kind1')
             }else if (json[i].kind === '地震情報') {
                 kind = '地震情報'
                 table_body.Id = 'kind2'
+                table_body.classList.add('kind2')
             }else if (json[i].kind === '国民保護に関する情報') {
                 kind = 'J-alert'
                 table_body.Id = 'kind3'
+                table_body.classList.add('kind3')
             }else if (json[i].kind === '通常') {
                 kind = 'その他'
                 table_body.Id = 'kind4'
+                table_body.classList.add('kind4')
             }
           kind_element.classList.add('kind');
           kind_element.textContent = kind;
@@ -1095,44 +1099,25 @@ fetchData();
 setInterval(fetchData, 60 * 1000); // 5分 = 5 * 60 * 1000 ミリ秒
                           </script>
     <script>
-        // 未選択のチェックボックスを取得する関数
-function getUncheckedCheckboxes() {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  var uncheckedCheckboxes = [];
+        // チェックボックスの要素を取得
+var checkboxes = document.querySelectorAll('.filter-checkbox');
 
-  checkboxes.forEach(function(checkbox) {
-    if (!checkbox.checked) {
-      uncheckedCheckboxes.push(checkbox);
+// 各チェックボックスにイベントリスナーを追加
+checkboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', function() {
+    // チェックされたチェックボックスの data-target 属性の値を取得
+    var target = this.getAttribute('data-target');
+    
+    // 対応する要素を取得
+    var element = document.querySelector('.' + target);
+    
+    // チェックボックスの状態によって要素の表示/非表示を切り替え
+    if (this.checked) {
+      element.style.display = 'block'; // 要素を表示
+    } else {
+      element.style.display = 'none'; // 要素を非表示
     }
   });
-
-  return uncheckedCheckboxes;
-}
-
-// 未選択のチェックボックスを取得
-var uncheckedBoxes = getUncheckedCheckboxes();
-
-// 取得したチェックボックスを操作する例
-uncheckedBoxes.forEach(function(checkbox) {
-    var kind_1 = document.getElementById('kind_1');
-    var kind_2 = document.getElementById('kind_2');
-    var kind_3 = document.getElementById('kind_3');
-    var kind_4 = document.getElementById('kind_4');
-  console.log('未選択のチェックボックスのID:', checkbox.id);
-    if (checkbox.id === 'checkbox1' && checkbox.id === 'checkbox2' && checkbox.id === 'checkbox3' && checkbox.id === 'checkbox4') {
-        kind_1.style.display = 'block';
-        kind_2.style.display = 'block';
-        kind_3.style.display = 'block';
-        kind_4.style.display = 'block';
-    }else if (checkbox.id === 'checkbox1') {
-        kind_1.style.display = 'none';
-    }if (checkbox.id === 'checkbox2') {
-        kind_2.style.display = 'none';
-    }if (checkbox.id === 'checkbox3') {
-        kind_3.style.display = 'none';
-    }if (checkbox.id === 'checkbox4') {
-        kind_4.style.display = 'none';
-    }
 });
 
     </script>
