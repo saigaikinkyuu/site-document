@@ -935,7 +935,7 @@ padding: 35px 40px;
                   </nav>
             
             </header>
-                  <h2 style="margin-top: -220px;">地震情報等の掲載、緊急時用のサービスを提供いたします!</h2>
+                  <h2 style="margin-top: -220px;">作成された資料・データを確認できます</h2>
         </header>
         <div class="linetital_container">
             <h2>LINE公式アカウントについて</h2>
@@ -946,79 +946,22 @@ padding: 35px 40px;
             <p>LINE公式アカウント追加は以下のボタンから！！！</p>
                 <a href="https://lin.ee/YD4r8Rs"><img src="./line.png" alt="友だち追加" height="50" border="0"></a>
         </div>
-        <div class="inner-block" style="height: auto;">
-          <div class="product-list">
-            <div class="product-item2 js-based2">
-                <div class="product-data">
-                  <h2 class="title"></h2>
-                  <p class="bodytext"></p>
-                </div>
-                </div>
-            </div>
-          </div>
-        <script>
-
-var api_url = 'https://script.google.com/macros/s/AKfycbxzgEeiR-5Ha_zlyRutxKxLdfnowV1D1vQcYByQ5wWOoVAdFSwSSvUc0S1lyaklxFW7/exec';
-
-  fetch(api_url)
-    .then(function (fetch_data) {
-      return fetch_data.json();
-    })
-    .then(function (json) {
-      for (var i in json) {
-        if (json[i].title && json[i].bodytext) {
-          var base_element = document.getElementsByClassName('product-item2 js-based2');
-          var clone_element = base_element[0].cloneNode(true);
-          clone_element.classList.remove('js-based2');
-          clone_element.querySelector('.title').textContent = json[i].title;
-          clone_element.querySelector('.bodytext').textContent = json[i].bodytext;
-
-          // 条件に応じてスタイルを適用
-          if (json[i].title === '【障害】') {
-            clone_element.querySelector('.product-data').classList.add('back-red');
-          };
-          if (json[i].title === '掲載停止中') {
-            clone_element.querySelector('.product-data').classList.add('back-red');
-          };
-          if (json[i].title === '【重要】') {
-            clone_element.querySelector('.product-data').classList.add('back-red');
-          };
-          if (json[i].title === '【緊急】') {
-            clone_element.querySelector('.product-data').classList.add('back-red');
-          };
-          if (json[i].title === '【復旧】') {
-            clone_element.querySelector('.product-data').classList.add('back-green');
-          };
-
-          base_element[0].parentNode.appendChild(clone_element);
-        }
-      }
-    });
-
-                          </script>
         <div class="item02">
                 <h2 id="news">更新履歴とお知らせ</h2>
-                <h3 class="I" style="color: red;">※掲載停止中</h3>
-                <p>※5分ごとに、お知らせが更新されます。すぐに更新する際は、サイトごとリロードしてください。</p>
-                <p>※スクロールできます。</p>
-                <p>※「詳しく見る」をクリックすることで、変更されたページに移動することができます。</p>
-                <div class="dtimer" data-sh="7" data-eh="21" data-em="59">
-
-
+                <p>※リンクをクリックするとgoogle driveが開きます。</p>
 <section class="product" style="line-height: normal;">
     <div class="inner-block">
       <ul class="product-list">
             <table id="product-table" style="width: 100%;">
         <li class="product-item js-based">
-              <div class="class-name" style="justify-content: center; display: flex; height: 20px;">
-              <p class="letter1"></p>
-              <p class="time"></p>
+              <div class="class-name" style="display: flex; height: 20px;">
+              <p class="kind"></p>
+              <p class="data" style="text-align: center;"></p>
               </div>
               <div class="line-one">
               <p class="alternate-text"></p>
               </div>
-              <p class="letter2" style="justify-content: center;"></p>
-              <p class="letter3" style="justify-content: right; color: gray;"></p>
+              <p class="title" style="justify-content: center;"></p>
             </table>
         </li>
       </ul>
@@ -1054,7 +997,7 @@ var api_url = 'https://script.google.com/macros/s/AKfycbxzgEeiR-5Ha_zlyRutxKxLdf
 
                       <script>
                         function fetchData() {
-  var api_url = 'https://script.google.com/macros/s/AKfycbwSmhocawGOXs-e0cdiJ_HhkThItCl6U6qBCpBY8xRs8UUAZHwDWZ1BSFR6MCX-SVcWVw/exec';
+  var api_url = 'https://script.google.com/macros/s/AKfycbza9CdwUVjS9ZBha5rtWTQ79vf8kIIaUIFdvnsQk1oDiKimMavPTYHWXVVWcHk70jUjlQ/exec';
 
   fetch(api_url)
     .then(function(fetch_data) {
@@ -1063,19 +1006,16 @@ var api_url = 'https://script.google.com/macros/s/AKfycbxzgEeiR-5Ha_zlyRutxKxLdf
     .then(function(json) {
       var base_element = document.querySelector('.product-item.js-based');
       var table_body = document.getElementById('product-table');
-        let t = 0
 
       // 前回のデータをクリア
       table_body.innerHTML = '';
 
       // p要素を作成して表示
       for (var i in json) {
-          t++
-    
-        if (json[i].time && json[i].letter1 && json[i].letter2) {
+        if (json[i].data && json[i].kind && json[i].title && json[i].url) {
             
     // 時間表記の変換
-              var timeValue = json[i].time;
+              var timeValue = json[i].data;
               var date = new Date(timeValue);
               var hours = date.getHours();
               var minutes = date.getMinutes();
@@ -1090,49 +1030,33 @@ var api_url = 'https://script.google.com/macros/s/AKfycbxzgEeiR-5Ha_zlyRutxKxLdf
           var clone_element = base_element.cloneNode(true);
           clone_element.classList.remove('js-based');
           clone_element.classList.add('show');
+            
+          var kind_element = document.createElement('p');
+            let kind
+            if (json[i].kind === '気象情報') {
+                kind = '気象情報'
+            }else if (json[i].kind === '地震情報') {
+                kind = '地震情報'
+            }else if (json[i].kind === '国民保護に関する情報') {
+                kind = 'J-alert'
+            }else if (json[i].kind === '通常') {
+                kind = 'その他'
+            }
+          kind_element.classList.add('kind');
+          kind_element.textContent = kind;
+          clone_element.querySelector('.kind').replaceWith(kind_element);
 
-          var time_element = document.createElement('p');
-          time_element.classList.add('time');
-          time_element.textContent = formattedTime;
-          clone_element.querySelector('.time').replaceWith(time_element);
-
-          var letter1_element = document.createElement('p');
-          letter1_element.classList.add('letter1');
-          letter1_element.textContent = json[i].letter1;
-          clone_element.querySelector('.letter1').replaceWith(letter1_element);
-
-          var letter2_element = document.createElement('p');
-letter2_element.classList.add('letter2');
-letter2_element.id = 'time2' + t;
-letter2_element.textContent = json[i].letter2;
-clone_element.querySelector('.letter2').replaceWith(letter2_element);
-
-var letter3_element = document.createElement('a');
-letter3_element.classList.add('letter3');
-letter3_element.id = 'time' + t;
-letter3_element.textContent = '詳しく見る';
-if (json[i].letter2.includes('ホーム')) {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-homepage/';
-}else if (json[i].letter2.includes('地震情報掲載ページ')) {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-earthquake/';
-}else if (json[i].letter2.includes('避難情報・気象警報')) {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-weather/';
-}else if (json[i].letter2.includes('利用規約')) {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-agreement/';
-}else if (json[i].letter2.includes('大規模地震配信')) {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-elive/';
-}else if (json[i].letter2.includes('Jアラートページ')) {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-Jalert/';
-}else if (json[i].letter2.includes('業務情報ページ')) {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-business/';
-}else {
-    letter3_element.href = 'https://saigaikinkyuu.github.io/site-homepage-404/';
-}
-clone_element.querySelector('.letter3').replaceWith(letter3_element);
+          var data_element = document.createElement('p');
+          data_element.classList.add('data');
+          data_element.textContent = formattedTime;
+          clone_element.querySelector('data').replaceWith(data_element);
 
 
-
-
+var title_element = document.createElement('a');
+title_element.classList.add('letter3');
+title_element.textContent = json[i].title;
+    title_element.href = json[i].url;
+clone_element.querySelector('.title').replaceWith(title_element);
 
           table_body.appendChild(clone_element);
         }
@@ -1167,17 +1091,6 @@ fetchData();
 setInterval(fetchData, 60 * 1000); // 5分 = 5 * 60 * 1000 ミリ秒
                           </script>
 
-                </div>
-                <div class="dtimer" data-sh="22" data-eh="24">
-                    <ul>
-                        <li>本日のお知らせの掲載は終了いたしました</li>
-                    </ul>
-                </div>
-                <div class="dtimer" data-sh="0" data-eh="6" data-em="59">
-                    <ul>
-                        <li>本日のお知らせの掲載は07:00からです</li>
-                    </ul>
-                </div>  
         </div>        
         <div class="container">
             <div class="item01">
@@ -1189,155 +1102,6 @@ setInterval(fetchData, 60 * 1000); // 5分 = 5 * 60 * 1000 ミリ秒
                     <p>また、ご利用前に必ず利用規約をお読みください。</p>
                     <a href="https://saigaikinkyuu.github.io/site-agreement/">利用規約はこちら</a>
                     <h2>提供中のサービス</h2>
-                    <div class="article_container">
-                        <div class="article_item1">
-                            <img src="./伝言icon.jpeg">
-                            <p>
-                                緊急用伝言サービス
-                            </p>
-                        </div>
-                        <div class="article_item2">
-                            <img src="./配信icon.jpeg" style="margin-left: 15px;">
-                            <p>
-                                大規模地震配信
-                            </p>
-                        </div>
-                    </div>
-                <h2>サービス状況</h2>
-                <p>記号の見方</p>
-                <div style="display: flex; height: 20px;"><p style="color: rgb(60, 255, 0);">○</p><p>･･･通常通り</p></div><div style="display: flex; height: 20px;"><p style="color: rgb(60, 255, 0);">◎</p><p>･･･障害復旧</p></div><div style="display: flex; height: 20px;"><p style="color: orange;">※○</p><p>･･･一部制限あり</p></div>
-                <div style="display: flex; height: 20px;"><p style="color: red;">✕</p><p>･･･障害発生中(復旧作業中)</p></div><div style="display: flex; height: 20px;"><p style="color: orange;">✕</p><p>･･･制限中</p></div><div style="display: flex; height: 20px; padding-bottom: 25px;"><p>ー</p><p>･･･サービス提供終了・不明</p></div>
-                  <div id="last-updated"></div>
-                <div class="table-container">
-                  <table class="meal-table">
-                    <tbody id="product-table2">
-                      <tr>
-                        <th>お知らせ(掲載)</th>
-                        <td id="situation1" style="font-size: 25px;"></td>
-                      </tr>
-                      <tr>
-                        <th>地震情報(掲載)</th>
-                        <td id="situation2" style="font-size: 25px;"></td>
-                      </tr>
-                      <tr>
-                        <th>気象情報(掲載)</th>
-                        <td id="situation3" style="font-size: 25px;"></td>
-                      </tr>
-                      <tr>
-                        <th>国民保護(掲載)</th>
-                        <td id="situation4" style="font-size: 25px;"></td>
-                      </tr>
-                      <tr>
-                        <th>緊急伝言板</th>
-                        <td id="situation5" style="font-size: 25px;"></td>
-                      </tr>
-                      <tr>
-                        <th>大規模地震配信</th>
-                        <td id="situation6" style="font-size: 25px;"></td>
-                      </tr>
-                      <tr>
-                        <th>地震情報(配信)</th>
-                        <td id="situation7" style="font-size: 25px;"></td>
-                      </tr>
-                      <tr>
-                        <th>気象情報(配信)</th>
-                        <td id="situation8" style="font-size: 25px;"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                
-                <script>
-                  function fetchData() {
-                    var api_url = 'https://script.google.com/macros/s/AKfycbyg0PznUw7VfJfOEVu-IctS4AcCyTBYWxvPEJSf8e4r125Cnp_X-VPTDuH855kYz8LUcA/exec';
-                
-                    fetch(api_url)
-                      .then(function(fetch_data) {
-                        return fetch_data.json();
-                      })
-                      .then(function(json) {
-                        for (var i = 0; i < json.length; i++) {
-                          if (json[i].kind && json[i].situation) {
-                            var situation_text;
-                            if (json[i].situation === '通常通り') {
-                              situation_text = '○';
-                            } else if (json[i].situation === '障害復旧') {
-                              situation_text = '◎';
-                            } else if (json[i].situation === '一部制限あり') {
-                              situation_text = '※○';
-                            } else if (json[i].situation === '障害発生中') {
-                              situation_text = '✕';
-                            } else if (json[i].situation === '制限中') {
-                              situation_text = '✕';
-                            } else if (json[i].situation === '終了') {
-                              situation_text = 'ー';
-                            } else if (json[i].situation === '不明') {
-                              situation_text = 'ー';
-                            }
-                
-                            var situation_id = 'situation' + (i + 1);
-                            var situation_cell = document.getElementById(situation_id);
-                            if (json[i].situation === '通常通り') {
-                              situation_cell.classList.add('green_text')
-                            } else if (json[i].situation === '障害復旧') {
-                              situation_cell.classList.add('green_text')
-                            } else if (json[i].situation === '一部制限あり') {
-                              situation_cell.classList.add('orange_text')
-                            } else if (json[i].situation === '障害発生中') {
-                              situation_cell.classList.add('red_text')
-                            } else if (json[i].situation === '制限中') {
-                              situation_cell.classList.add('orange_text')
-                            } else if (json[i].situation === '終了') {
-                              situation_cell.classList.add('black_text')
-                            } else if (json[i].situation === '不明') {
-                              situation_cell.classList.add('black_text')
-                            }
-                            if (situation_cell) {
-                              situation_cell.textContent = situation_text;
-                            }
-                          }
-                          // 最終変更時刻を更新
-        var lastUpdatedElement = document.getElementById('last-updated');
-        if (lastUpdatedElement) {
-          var currentTime = new Date();
-          var formattedTime = currentTime.toLocaleString();
-          lastUpdatedElement.textContent = '最終変更時刻: ' + formattedTime;
-        }
-                        }
-                      });
-                  }
-                
-                  // 初回実行時にデータを取得する
-                  fetchData();
-                
-                  // 10分ごとにfetchDataを実行する
-                  setInterval(fetchData, 10 * 60 * 1000); // 10分 = 10 * 60 * 1000 ミリ秒
-                </script>
-                <style>
-                  .green_text{
-                    color: rgb(24, 202, 0);
-                    background-color: rgb(250 248 231);
-                  }
-                  .orange_text{
-                    color: orange;
-                  }
-                  .red_text{
-                    color: red;
-                  }
-                  .black_text{
-                    color: black;
-                  }
-                </style>
-        </div>
-        </div>
-        <table id="table-data"></table>
-
-        <audio id="audioPlayer" autoplay loop>
-            <source src="#" type="audio/mpeg">
-          </audio>
-          <script src="audio"></script>
-          
-        
         <footer>
             <h2>©2023 EWIDE緊急気象情報配信アカウント</h2>
         </footer>
