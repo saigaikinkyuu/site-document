@@ -1036,19 +1036,19 @@ padding: 35px 40px;
             if (json[i].kind === '気象情報') {
                 kind = '気象情報'
                 table_body.Id = 'kind1'
-                table_body.classList.add('kind1')
+                table_body.classList.add('kind_1')
             }else if (json[i].kind === '地震情報') {
                 kind = '地震情報'
                 table_body.Id = 'kind2'
-                table_body.classList.add('kind2')
+                table_body.classList.add('kind_2')
             }else if (json[i].kind === '国民保護に関する情報') {
                 kind = 'J-alert'
                 table_body.Id = 'kind3'
-                table_body.classList.add('kind3')
+                table_body.classList.add('kind_3')
             }else if (json[i].kind === '通常') {
                 kind = 'その他'
                 table_body.Id = 'kind4'
-                table_body.classList.add('kind4')
+                table_body.classList.add('kind_4')
             }
           kind_element.classList.add('kind');
           kind_element.textContent = kind;
