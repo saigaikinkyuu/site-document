@@ -800,7 +800,7 @@ padding: 35px 40px;
             </style>
         <div>
           <script>
-            var api_url = 'https://script.google.com/macros/s/AKfycbwp1T6EyVyAEKMzjTgyVBVKiXFtor2vqv-ZiqvUVQC_-1qIYLmSznVLLTaYGDA3S1sP4w/exec';
+              var api_url = 'https://script.google.com/macros/s/AKfycbwp1T6EyVyAEKMzjTgyVBVKiXFtor2vqv-ZiqvUVQC_-1qIYLmSznVLLTaYGDA3S1sP4w/exec'
             
             console.log('1');
             fetch(api_url)
@@ -815,7 +815,7 @@ padding: 35px 40px;
                   if (json[i].situation === 'stop publish') {
                     // 何も行わない
                   } else if (json[i].situation === '') {
-                    I.classList.add('not');
+                      //何も行わない
                   } else {
                     window.location.href = 'https://saigaikinkyuu.github.io/site-earthquake/';
                   }
@@ -1049,7 +1049,7 @@ padding: 35px 40px;
           var data_element = document.createElement('p');
           data_element.classList.add('data');
           data_element.textContent = formattedTime;
-          clone_element.querySelector('data').replaceWith(data_element);
+          clone_element.querySelector('.data').replaceWith(data_element);
 
 
 var title_element = document.createElement('a');
