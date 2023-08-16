@@ -945,14 +945,18 @@ padding: 35px 40px;
         <div class="item02">
                 <h2 id="news">更新履歴とお知らせ</h2>
                 <p>※リンクをクリックするとgoogle driveが開きます。</p>
+            <a href="" class="btn btn--orange" id="toggleLink">表示設定</a>
+            <div  id="targetElement" style="display: block;">
+            <p>絞り込み</p>
             <label>気象情報</label>
-            <input type="checkbox" id="checkbox1" class="filter-checkbox" data-target="kind_1">
+            <input type="checkbox" id="checkbox1" class="filter-checkbox" data-target="kind_1" checked>
             <label>地震情報</label>
-            <input type="checkbox" id="checkbox2" class="filter-checkbox" data-target="kind_2">
+            <input type="checkbox" id="checkbox2" class="filter-checkbox" data-target="kind_2" checked>
             <label>J-alert</label>
-            <input type="checkbox" id="checkbox3" class="filter-checkbox" data-target="kind_3">
+            <input type="checkbox" id="checkbox3" class="filter-checkbox" data-target="kind_3" checked>
             <label>その他</label>
-            <input type="checkbox" id="checkbox4" class="filter-checkbox" data-target="kind_4">
+            <input type="checkbox" id="checkbox4" class="filter-checkbox" data-target="kind_4" checked>
+            </div>
 <section class="product" style="line-height: normal;">
     <div class="inner-block">
       <ul class="product-list">
@@ -996,8 +1000,37 @@ padding: 35px 40px;
     letter3 a{
         color: gray;
     }
+      .btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
+      .kind{
+          padding-right: 30px;
+      }
   </style>
-  
+<script>
+    // aタグと表示対象の要素を取得
+const toggleLink = document.getElementById('toggleLink');
+const targetElement = document.getElementById('targetElement');
+
+// aタグのクリックイベントを設定
+toggleLink.addEventListener('click', function(event) {
+    event.preventDefault(); // リンクのデフォルト動作を無効にする
+
+    if (targetElement.style.display === 'none') {
+        targetElement.style.display = 'block'; // 非表示を表示に変更
+    } else {
+        targetElement.style.display = 'none'; // 表示を非表示に変更
+    }
+});
+
+</script>  
 
                       <script>
                         function fetchData() {
