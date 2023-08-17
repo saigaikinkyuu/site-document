@@ -1068,7 +1068,6 @@ toggleLink.addEventListener('click', function(event) {
             let kind
             if (json[i].kind === '気象情報') {
                 kind = '気象情報'
-                table_body.Id = 'kind1'
                 base_element.classList.remove('kind_1')
                 base_element.classList.remove('kind_2')
                 base_element.classList.remove('kind_3')
@@ -1076,7 +1075,6 @@ toggleLink.addEventListener('click', function(event) {
                 base_element.classList.add('kind_1')
             }else if (json[i].kind === '地震情報') {
                 kind = '地震情報'
-                table_body.Id = 'kind2'
                 base_element.classList.remove('kind_1')
                 base_element.classList.remove('kind_2')
                 base_element.classList.remove('kind_3')
@@ -1084,7 +1082,6 @@ toggleLink.addEventListener('click', function(event) {
                 base_element.classList.add('kind_2')
             }else if (json[i].kind === '国民保護に関する情報') {
                 kind = 'J-alert'
-                table_body.Id = 'kind3'
                 base_element.classList.remove('kind_1')
                 base_element.classList.remove('kind_2')
                 base_element.classList.remove('kind_3')
@@ -1092,7 +1089,6 @@ toggleLink.addEventListener('click', function(event) {
                 base_element.classList.add('kind_3')
             }else if (json[i].kind === '通常') {
                 kind = 'その他'
-                table_body.Id = 'kind4'
                 base_element.classList.remove('kind_1')
                 base_element.classList.remove('kind_2')
                 base_element.classList.remove('kind_3')
@@ -1143,9 +1139,6 @@ for (var i = 0; i < elements.length; i++) {
 
 // 初回実行
 fetchData();
-
-// 5分ごとにfetchDataを実行する
-setInterval(fetchData, 60 * 1000); // 5分 = 5 * 60 * 1000 ミリ秒
                           </script>
     <script>
         // チェックボックスの要素を取得
