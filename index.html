@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>J気象サービス-資料・データ</title>
+        <title>J気象サービス-各種資料・データ</title>
         <link rel=”stylesheet” href=”https://saigaikinkyuu.github.io/site-homepage/style.css”>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="keywords" content="地震情報,気象情報,日本の地震情報,日本の気象情報,Japan気象サービス" />
@@ -946,7 +946,7 @@ padding: 35px 40px;
                 <h2 id="news">更新履歴とお知らせ</h2>
                 <p>※リンクをクリックするとgoogle driveが開きます。</p>
             <a href="" class="btn btn--orange" id="toggleLink">表示設定</a>
-            <div  id="targetElement" style="display: block;">
+            <div  id="targetElement" style="display: none;">
             <p>絞り込み</p>
             <label>気象情報</label>
             <input type="checkbox" id="checkbox1" class="filter-checkbox" data-target="kind_1" checked>
@@ -1069,19 +1069,19 @@ toggleLink.addEventListener('click', function(event) {
             if (json[i].kind === '気象情報') {
                 kind = '気象情報'
                 table_body.Id = 'kind1'
-                table_body.classList.add('kind_1')
+                base_element.classList.add('kind_1')
             }else if (json[i].kind === '地震情報') {
                 kind = '地震情報'
                 table_body.Id = 'kind2'
-                table_body.classList.add('kind_2')
+                base_element.classList.add('kind_2')
             }else if (json[i].kind === '国民保護に関する情報') {
                 kind = 'J-alert'
                 table_body.Id = 'kind3'
-                table_body.classList.add('kind_3')
+                base_element.classList.add('kind_3')
             }else if (json[i].kind === '通常') {
                 kind = 'その他'
                 table_body.Id = 'kind4'
-                table_body.classList.add('kind_4')
+                base_element.classList.add('kind_4')
             }
           kind_element.classList.add('kind');
           kind_element.textContent = kind;
