@@ -1068,32 +1068,32 @@ toggleLink.addEventListener('click', function(event) {
             let kind
             if (json[i].kind === '気象情報') {
                 kind = '気象情報'
-                base_element.classList.remove('kind_1')
-                base_element.classList.remove('kind_2')
-                base_element.classList.remove('kind_3')
-                base_element.classList.remove('kind_4')
-                base_element.classList.add('kind_1')
+                clone_element.classList.remove('kind_1')
+                clone_element.classList.remove('kind_2')
+                clone_element.classList.remove('kind_3')
+                clone_element.classList.remove('kind_4')
+                clone_element.classList.add('kind_1')
             }else if (json[i].kind === '地震情報') {
                 kind = '地震情報'
-                base_element.classList.remove('kind_1')
-                base_element.classList.remove('kind_2')
-                base_element.classList.remove('kind_3')
-                base_element.classList.remove('kind_4')
-                base_element.classList.add('kind_2')
+                clone_element.classList.remove('kind_1')
+                clone_element.classList.remove('kind_2')
+                clone_element.classList.remove('kind_3')
+                clone_element.classList.remove('kind_4')
+                clone_element.classList.add('kind_2')
             }else if (json[i].kind === '国民保護に関する情報') {
                 kind = 'J-alert'
-                base_element.classList.remove('kind_1')
-                base_element.classList.remove('kind_2')
-                base_element.classList.remove('kind_3')
-                base_element.classList.remove('kind_4')
-                base_element.classList.add('kind_3')
+                clone_element.classList.remove('kind_1')
+                clone_element.classList.remove('kind_2')
+                clone_element.classList.remove('kind_3')
+                clone_element.classList.remove('kind_4')
+                clone_element.classList.add('kind_3')
             }else if (json[i].kind === '通常') {
                 kind = 'その他'
-                base_element.classList.remove('kind_1')
-                base_element.classList.remove('kind_2')
-                base_element.classList.remove('kind_3')
-                base_element.classList.remove('kind_4')
-                base_element.classList.add('kind_4')
+                clone_element.classList.remove('kind_1')
+                clone_element.classList.remove('kind_2')
+                clone_element.classList.remove('kind_3')
+                clone_element.classList.remove('kind_4')
+                clone_element.classList.add('kind_4')
             }
           kind_element.classList.add('kind');
           kind_element.textContent = kind;
